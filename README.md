@@ -5,77 +5,62 @@
 <!-- requires URL update [![Windows Build Status][ci-win-img]][ci-win-url] -->
 <!-- doesn't work in haraka plugins... yet. [![Code Coverage][cov-img]][cov-url]-->
 
-# haraka-plugin-template
+# haraka-plugin-auth-imap
 
-Clone me, to create a new plugin!
+Authenticate against an imap server.
 
-# Template Instructions
+## Configuration
 
-These instructions will not self-destruct after use. Use and destroy.
+Configuration is stored in `config/auth_imap.ini` and uses INI
+style formatting.
 
-See also, [How to Write a Plugin](https://github.com/haraka/Haraka/wiki/Write-a-Plugin) and [Plugins.md](https://github.com/haraka/Haraka/blob/master/docs/Plugins.md) for additional plugin writing information.
+These are the configuration settings:
 
-## Create a new repo for your plugin
+* host: The host/IP that the imap server is listening on (default: localhost).
 
-Haraka plugins are named like `haraka-plugin-something`. All the namespace
-after `haraka-plugin-` is yours for the taking. Please check the [Plugins]() page and a Google search to see what plugins already exist.
+* port: The TCP port that the imap server is listening on (default: 143).
 
-Once you've settled on a name, create the GitHub repo. On the repo's main page, click the _Clone or download_ button and copy the URL. Then paste that URL into a local ENV variable with a command like this:
+* tls: Perform implicit TLS connection? (default: false).
 
-```sh
-export MY_PLUGIN_NAME=haraka-plugin-SOMETHING
-export MY_PLUGIN_REPO=git@github.com:SOME_ORG/haraka-plugin-SOMETHING.git
-```
+* rejectUnauthorized: Set rejectUnauthorized in tlsOptions for 
+  imap connection (default: do not set tlsOptions).
 
-Clone and rename the template repo:
+* connTimeout: Number of milliseconds to wait for a connection to be 
+  established (default: none).
 
-```sh
-git clone git@github.com:haraka/haraka-plugin-template.git
-mv haraka-plugin-template $MY_PLUGIN_NAME
-cd $MY_PLUGIN_NAME
-git remote rm origin
-git remote add origin $MY_PLUGIN_REPO
-```
+* authTimeout: Number of milliseconds to wait to be authenticated after a 
+  connection has been established (default: none).
 
-Now you'll have a local git repo to begin authoring your plugin
+* users: comma separated list of users (local part before '@') which are 
+  allowed to be authenticated by the imap server. If this setting is missing,
+  all users are allowed. So use this setting, if you have no control over 
+  the imap server because otherwise you could create an open relay, e.g.
+  if you would authenticate with gmail and do not set users, every gmail
+  user could use your mail server to send mail (default: none).
 
-## rename boilerplate
+* trace_imap: if true, emit imap debug information. Do not use this in
+  production because it logs sensitive information, e.g. passowrds in
+  clear text (default: none).
 
-Replaces all uses of the word `template` with your plugin's name.
+### Per-domain Configuration
 
-./redress.sh [something]
+Additionally, domains can each have their own configuration for connecting
+to the imap server. The defaults are the same, so only the differences needs 
+to be declared. Example:
 
-You'll then be prompted to update package.json and then force push this repo onto the GitHub repo you've created earlier.
+    host=imap.example.com
+    
+    [gmail.com]
+    host=imap.gmail.com
+    port=993
+    tls=true
+    users=arthur,trillian,ford
 
+    [example2.com]
+    host=imap.example2.com
+    port=993
+    tls=true
 
-## Enable Travis-CI testing
-
-- [ ] visit your [Travis-CI profile page](https://travis-ci.org/profile) and enable Continuous Integration testing on the repo
-- [ ] enable Code Climate. Click the _code climate_ badge and import your repo.
-
-
-
-# Add your content here
-
-## INSTALL
-
-```sh
-cd /path/to/local/haraka
-npm install haraka-plugin-template
-echo "template" >> config/plugins
-service haraka restart
-```
-
-### Configuration
-
-If the default configuration is not sufficient, copy the config file from the distribution into your haraka config dir and then modify it:
-
-```sh
-cp node_modules/haraka-plugin-template/config/template.ini config/template.ini
-$EDITOR config/template.ini
-```
-
-## USAGE
 
 
 <!-- leave these buried at the bottom of the document -->
