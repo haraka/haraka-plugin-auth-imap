@@ -3,7 +3,7 @@
 exports.register = function () {
     var plugin = this;
 
-	try {
+    try {
         plugin.imap = require('imap');
     }
     catch (ignore) {}
