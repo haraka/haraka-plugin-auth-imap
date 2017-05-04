@@ -1,5 +1,5 @@
 {
-  "name": "haraka-plugin-template",
+  "name": "haraka-plugin-auth-imap",
   "version": "1.0.0",
   "description": "Haraka plugin that frobnicates email connections",
   "main": "index.js",
@@ -10,19 +10,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/haraka/haraka-plugin-template.git"
+    "url": "git+https://github.com/haraka/haraka-plugin-auth-imap.git"
   },
   "keywords": [
     "haraka",
     "plugin",
-    "template"
+    "auth-imap"
   ],
   "author": "Welcome Member <happy-haraka-hacker@example.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/haraka/haraka-plugin-template/issues"
+    "url": "https://github.com/haraka/haraka-plugin-auth-imap/issues"
   },
-  "homepage": "https://github.com/haraka/haraka-plugin-template#readme",
+  "homepage": "https://github.com/haraka/haraka-plugin-auth-imap#readme",
   "devDependencies": {
     "eslint": ">=3",
     "eslint-plugin-haraka": "*",

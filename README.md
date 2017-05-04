@@ -64,15 +64,15 @@ to be declared. Example:
 
 
 <!-- leave these buried at the bottom of the document -->
-[ci-img]: https://travis-ci.org/haraka/haraka-plugin-template.svg
-[ci-url]: https://travis-ci.org/haraka/haraka-plugin-template
+[ci-img]: https://travis-ci.org/haraka/haraka-plugin-auth-imap.svg
+[ci-url]: https://travis-ci.org/haraka/haraka-plugin-auth-imap
 [ci-win-img]: https://ci.appveyor.com/api/projects/status/CHANGETHIS?svg=true
 [ci-win-url]: https://ci.appveyor.com/project/haraka/haraka-CHANGETHIS
-[cov-img]: https://codecov.io/github/haraka/haraka-plugin-template/coverage.svg
-[cov-url]: https://codecov.io/github/haraka/haraka-plugin-template
-[clim-img]: https://codeclimate.com/github/haraka/haraka-plugin-template/badges/gpa.svg
-[clim-url]: https://codeclimate.com/github/haraka/haraka-plugin-template
-[gk-img]: https://badges.greenkeeper.io/haraka/haraka-plugin-template.svg
+[cov-img]: https://codecov.io/github/haraka/haraka-plugin-auth-imap/coverage.svg
+[cov-url]: https://codecov.io/github/haraka/haraka-plugin-auth-imap
+[clim-img]: https://codeclimate.com/github/haraka/haraka-plugin-auth-imap/badges/gpa.svg
+[clim-url]: https://codeclimate.com/github/haraka/haraka-plugin-auth-imap
+[gk-img]: https://badges.greenkeeper.io/haraka/haraka-plugin-auth-imap.svg
 [gk-url]: https://greenkeeper.io/
-[npm-img]: https://nodei.co/npm/haraka-plugin-template.png
-[npm-url]: https://www.npmjs.com/package/haraka-plugin-template
+[npm-img]: https://nodei.co/npm/haraka-plugin-auth-imap.png
+[npm-url]: https://www.npmjs.com/package/haraka-plugin-auth-imap

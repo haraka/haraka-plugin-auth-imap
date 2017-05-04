@@ -27,12 +27,4 @@ describe('load_imap_ini', function () {
         assert.ok(this.plugin.cfg);
         done();
     });
-
-    /*
-    it('initializes enabled boolean', function (done) {
-        this.plugin.load_template_ini();
-        assert.equal(this.plugin.cfg.main.enabled, true, this.plugin.cfg);
-        done();
-    });
-    */
 });
