@@ -1,9 +1,9 @@
 
 // node.js built-in modules
-var assert   = require('assert');
+const assert   = require('assert');
 
 // npm modules
-var fixtures = require('haraka-test-fixtures');
+const fixtures = require('haraka-test-fixtures');
 
 // start of tests
 //    assert: https://nodejs.org/api/assert.html
