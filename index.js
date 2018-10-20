@@ -66,18 +66,19 @@ exports.check_plain_passwd = function (connection, user, passwd, cb) {
         config.port = sect.port;
     }
     if (sect.tls) {
-        config.tls = sect.tls;
+        config.tls = (sect.tls === 'true');
     }
     if (sect.rejectUnauthorized) {
-        config.tlsOptions = {
-            rejectUnauthorized: sect.rejectUnauthorized
-        };
+        if (!config.tlsOptions) {
+            config.tlsOptions = {};
+        }
+        config.tlsOptions.rejectUnauthorized = (sect.rejectUnauthorized === 'true');
     }
     if (sect.connTimeout) {
-        config.connTimeout = sect.connTimeout;
+        config.connTimeout = parseInt(sect.connTimeout, 10);
     }
     if (sect.authTimeout) {
-        config.authTimeout = sect.authTimeout;
+        config.authTimeout = parseInt(sect.authTimeout, 10);
     }
 
     if (sect.users) {
