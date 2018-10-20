@@ -34,6 +34,7 @@ exports.hook_capabilities = function (next, connection) {
     next();
 };
 
+const ca_cache = {}
 exports.check_plain_passwd = function (connection, user, passwd, cb) {
     const plugin = this;
     let trace_imap = false;
@@ -67,6 +68,12 @@ exports.check_plain_passwd = function (connection, user, passwd, cb) {
     }
     if (sect.tls) {
         config.tls = (sect.tls === 'true');
+    }
+    if (sect.ca) {
+        if (!ca_cache[section_name]) {
+            ca_cache[section_name] = require('fs').readFileSync(sect.ca);
+        }
+        config.tlsOptions = {ca: [ca_cache[section_name]]};
     }
     if (sect.rejectUnauthorized) {
         if (!config.tlsOptions) {
