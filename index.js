@@ -19,7 +19,13 @@ exports.register = function () {
 
 exports.load_imap_ini = function () {
     const plugin = this;
-    plugin.cfg = plugin.config.get('auth_imap.ini', function () {
+    plugin.cfg = plugin.config.get('auth_imap.ini', {
+        booleans: [
+            '-main.tls',
+            '-main.rejectUnauthorized'
+        ],
+    },
+    function () {
         plugin.load_imap_ini();
     });
 };
@@ -38,14 +44,6 @@ const ca_cache = {}
 exports.check_plain_passwd = function (connection, user, passwd, cb) {
     const plugin = this;
     let trace_imap = false;
-    const config = {
-        user: user,
-        password: passwd,
-        host: 'localhost',
-        port: 143,
-        tls: false
-    };
-
     const domain = (user.split('@'))[1];
     let sect = plugin.cfg.main;
     let section_name = 'main';
@@ -53,6 +51,17 @@ exports.check_plain_passwd = function (connection, user, passwd, cb) {
         sect = plugin.cfg[domain];
         section_name = domain;
     }
+
+    const config = {
+        user: user,
+        password: passwd,
+        host: 'localhost',
+        port: 143,
+        tls: sect.tls,
+        tlsOptions: {
+            rejectUnauthorized: sect.rejectUnauthorized
+        };
+    };
 
     if (sect.trace_imap == 'true') {
         trace_imap = true;
@@ -66,20 +75,11 @@ exports.check_plain_passwd = function (connection, user, passwd, cb) {
     if (sect.port) {
         config.port = sect.port;
     }
-    if (sect.tls) {
-        config.tls = (sect.tls === 'true');
-    }
     if (sect.ca) {
         if (!ca_cache[section_name]) {
             ca_cache[section_name] = require('fs').readFileSync(sect.ca);
         }
-        config.tlsOptions = {ca: [ca_cache[section_name]]};
-    }
-    if (sect.rejectUnauthorized) {
-        if (!config.tlsOptions) {
-            config.tlsOptions = {};
-        }
-        config.tlsOptions.rejectUnauthorized = (sect.rejectUnauthorized === 'true');
+        config.tlsOptions.ca = [ca_cache[section_name]];
     }
     if (sect.connTimeout) {
         config.connTimeout = parseInt(sect.connTimeout, 10);
