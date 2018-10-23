@@ -60,7 +60,7 @@ exports.check_plain_passwd = function (connection, user, passwd, cb) {
         tls: sect.tls,
         tlsOptions: {
             rejectUnauthorized: sect.rejectUnauthorized
-        };
+        }
     };
 
     if (sect.trace_imap == 'true') {
