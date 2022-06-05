@@ -34,7 +34,7 @@ exports.hook_capabilities = function (next, connection) {
     // Don't offer AUTH capabilities by default unless session is encrypted
     if (connection.tls.enabled) {
         const methods = ['PLAIN', 'LOGIN'];
-        connection.capabilities.push('AUTH ' + methods.join(' '));
+        connection.capabilities.push(`AUTH ${  methods.join(' ')}`);
         connection.notes.allowed_auth_methods = methods;
     }
     next();
@@ -53,7 +53,7 @@ exports.check_plain_passwd = function (connection, user, passwd, cb) {
     }
 
     const config = {
-        user: user,
+        user,
         password: passwd,
         host: 'localhost',
         port: 143,
@@ -90,8 +90,8 @@ exports.check_plain_passwd = function (connection, user, passwd, cb) {
 
     if (sect.users) {
         if (sect.users.split(/\s*,\s*/).indexOf((user.split('@'))[0]) < 0) {
-            connection.loginfo(plugin, 'AUTH user="' + user +
-                '" is not allowed to authenticate by imap'
+            connection.loginfo(plugin, `AUTH user="${  user
+            }" is not allowed to authenticate by imap`
             );
             return cb(false);
         }
@@ -99,24 +99,24 @@ exports.check_plain_passwd = function (connection, user, passwd, cb) {
 
     const client = new plugin.imap(config);
 
-    let message = 'section="' + section_name + '" host="' +
-        config.host + '" port="' + config.port + '" tls=' + config.tls;
+    let message = `section="${  section_name  }" host="${
+        config.host  }" port="${  config.port  }" tls=${  config.tls}`;
     if (config.tlsOptions) {
-        message += ' rejectUnauthorized=' + config.tlsOptions
-            .rejectUnauthorized;
+        message += ` rejectUnauthorized=${  config.tlsOptions
+            .rejectUnauthorized}`;
     }
     if (config.connTimeout) {
-        message += ' connTimeout=' + config.connTimeout;
+        message += ` connTimeout=${  config.connTimeout}`;
     }
     if (config.authTimeout) {
-        message += ' authTimeout=' + config.authTimeout;
+        message += ` authTimeout=${  config.authTimeout}`;
     }
     connection.logdebug(plugin, message);
 
     client.once('ready', function () {
 
-        connection.loginfo(plugin, 'AUTH user="' + user +
-            '" success=true');
+        connection.loginfo(plugin, `AUTH user="${  user
+        }" success=true`);
         if (trace_imap) {
             connection.logdebug(plugin, client);
         }
@@ -125,8 +125,8 @@ exports.check_plain_passwd = function (connection, user, passwd, cb) {
     });
 
     client.once('error', function (err) {
-        connection.loginfo(plugin, 'AUTH user="' + user +
-            '" success=false error="' + err.message + '"');
+        connection.loginfo(plugin, `AUTH user="${  user
+        }" success=false error="${  err.message  }"`);
         if (trace_imap) {
             connection.logdebug(plugin, client);
         }

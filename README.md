@@ -1,9 +1,6 @@
 [![Build Status][ci-img]][ci-url]
 [![Code Climate][clim-img]][clim-url]
-[![Greenkeeper badge][gk-img]][gk-url]
 [![NPM][npm-img]][npm-url]
-<!-- requires URL update [![Windows Build Status][ci-win-img]][ci-win-url] -->
-<!-- doesn't work in haraka plugins... yet. [![Code Coverage][cov-img]][cov-url]-->
 
 # haraka-plugin-auth-imap
 
@@ -64,15 +61,9 @@ to be declared. Example:
 
 
 <!-- leave these buried at the bottom of the document -->
-[ci-img]: https://travis-ci.org/haraka/haraka-plugin-auth-imap.svg
-[ci-url]: https://travis-ci.org/haraka/haraka-plugin-auth-imap
-[ci-win-img]: https://ci.appveyor.com/api/projects/status/CHANGETHIS?svg=true
-[ci-win-url]: https://ci.appveyor.com/project/haraka/haraka-CHANGETHIS
-[cov-img]: https://codecov.io/github/haraka/haraka-plugin-auth-imap/coverage.svg
-[cov-url]: https://codecov.io/github/haraka/haraka-plugin-auth-imap
+[ci-img]: https://github.com/haraka/haraka-plugin-auth-imap/actions/workflows/ci.yml/badge.svg
+[ci-url]: https://github.com/haraka/haraka-plugin-auth-imap/actions/workflows/ci.yml
 [clim-img]: https://codeclimate.com/github/haraka/haraka-plugin-auth-imap/badges/gpa.svg
 [clim-url]: https://codeclimate.com/github/haraka/haraka-plugin-auth-imap
-[gk-img]: https://badges.greenkeeper.io/haraka/haraka-plugin-auth-imap.svg
-[gk-url]: https://greenkeeper.io/
 [npm-img]: https://nodei.co/npm/haraka-plugin-auth-imap.png
 [npm-url]: https://www.npmjs.com/package/haraka-plugin-auth-imap
