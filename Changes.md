@@ -3,16 +3,6 @@
 
 ### [1.0.3] - 2022-06-05
 
-#### Added
-
-- 
-
-#### Fixed
-
-- 
-
-#### Changed
-
 - ci: replace travis & appveyor with github actions
 - ci: add submodule .release
 

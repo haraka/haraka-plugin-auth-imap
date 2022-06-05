@@ -61,8 +61,8 @@ to be declared. Example:
 
 
 <!-- leave these buried at the bottom of the document -->
-[ci-img]: https://travis-ci.org/haraka/haraka-plugin-auth-imap.svg
-[ci-url]: https://travis-ci.org/haraka/haraka-plugin-auth-imap
+[ci-img]: https://github.com/haraka/haraka-plugin-auth-imap/actions/workflows/ci.yml/badge.svg
+[ci-url]: https://github.com/haraka/haraka-plugin-auth-imap/actions/workflows/ci.yml
 [clim-img]: https://codeclimate.com/github/haraka/haraka-plugin-auth-imap/badges/gpa.svg
 [clim-url]: https://codeclimate.com/github/haraka/haraka-plugin-auth-imap
 [npm-img]: https://nodei.co/npm/haraka-plugin-auth-imap.png
