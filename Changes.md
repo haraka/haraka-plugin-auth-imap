@@ -13,9 +13,8 @@
 
 #### Changed
 
-- ci: add submodule .release
 - ci: replace travis & appveyor with github actions
-
+- ci: add submodule .release
 
 
 # 1.0.1 - 2018-10-23
